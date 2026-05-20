@@ -89,6 +89,7 @@ import RiskMonitoring from './pages/analytics/RiskMonitoring';
 import DashboardBuilder from './pages/analytics/DashboardBuilder';
 
 import CompanyList from './pages/company/CompanyList';
+import CompanyDetail from './pages/company/CompanyDetail';
 import BranchLocations from './pages/company/BranchLocations';
 import DepartmentStructure from './pages/company/DepartmentStructure';
 import OrganizationChart from './pages/company/OrganizationChart';
@@ -187,6 +188,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="analytics/risks" element={<RiskMonitoring />} />
           <Route path="analytics/builder" element={<DashboardBuilder />} />
           <Route path="company/list" element={<CompanyList />} />
+          <Route path="company/:id" element={<CompanyDetail />} />
           <Route path="company/branches" element={<BranchLocations />} />
           <Route path="company/departments" element={<DepartmentStructure />} />
           <Route path="company/org-chart" element={<OrganizationChart />} />
