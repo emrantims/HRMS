@@ -4,7 +4,7 @@ import { cn } from "../../lib/utils";
 import { 
   BarChart3, Users, CalendarCheck, Banknote, Landmark, FileCheck, 
   Laptop, DoorOpen, PieChart, Bot, Building2, ShieldCheck, 
-  ClipboardList, Settings, ChevronDown, ChevronRight
+  Settings, ChevronDown, ChevronRight
 } from "lucide-react";
 
 const NAV_MODULES = [
@@ -241,9 +241,9 @@ export function Sidebar() {
     <aside className="fixed left-0 top-0 z-40 h-screen w-[280px] bg-primary text-white flex flex-col font-sans">
       <div className="p-5 border-b border-white/10 shrink-0 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-accent rounded flex items-center justify-center font-bold text-white shadow-inner">E</div>
+          <div className="w-8 h-8 bg-accent rounded flex items-center justify-center font-bold text-white shadow-inner">A</div>
           <div>
-            <h1 className="text-sm font-bold tracking-wider uppercase text-white/90">Emirates Group</h1>
+            <h1 className="text-sm font-bold tracking-wider uppercase text-white/90">ALIYAS GROUP</h1>
             <p className="text-[10px] text-white/50 tracking-wider">ENTERPRISE ERP</p>
           </div>
         </div>
@@ -254,8 +254,6 @@ export function Sidebar() {
           {NAV_MODULES.map((module) => {
             const isActive = location.pathname.startsWith(module.href) && module.href !== "/";
             const isHomeActive = module.href === "/" && location.pathname === "/";
-            
-            // Auto expand if active and not already expanded by user
             const isExpanded = expanded === module.name || (expanded === null && (isActive || isHomeActive));
 
             return (
@@ -279,7 +277,7 @@ export function Sidebar() {
           </div>
           <div>
             <div className="text-xs font-bold text-white">HR Admin</div>
-            <div className="text-[10px] text-white/40">admin@emiratesgroup.ae</div>
+            <div className="text-[10px] text-white/40">admin@aliyasgroup.ae</div>
           </div>
         </div>
       </div>
