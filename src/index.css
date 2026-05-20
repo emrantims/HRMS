@@ -54,6 +54,31 @@
 }
 
 @layer utilities {
+  .app-content > * {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .app-content > [class*="max-w-"],
+  .app-content > .mx-auto,
+  .app-content > [class*=" mx-auto"],
+  .app-content > [class^="mx-auto"],
+  .app-content > div[class*="max-w-"] {
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .app-content > div > [class*="max-w-"]:only-child,
+  .app-content > div > .mx-auto:only-child,
+  .app-content > div > [class*=" mx-auto"]:only-child {
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
   main .bg-surface, main .bg-white, main .bg-background, main .bg-muted, main .glass-panel {
     color: var(--color-primary);
   }
