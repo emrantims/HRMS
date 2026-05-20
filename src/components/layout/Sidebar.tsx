@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "../../lib/utils";
+import { BrandLogo } from "../BrandLogo";
 import { 
   BarChart3, Users, CalendarCheck, Banknote, Landmark, FileCheck, 
   Laptop, DoorOpen, PieChart, Bot, Building2, ShieldCheck, 
@@ -193,8 +194,8 @@ function NavItem({ module, isActive, isExpanded, toggleExpand, location }) {
       <button
         onClick={() => toggleExpand(module.name)}
         className={cn(
-          "w-full flex items-center justify-between px-3 py-2 rounded-md text-sm transition-colors",
-          isActive || isExpanded ? "bg-white/10 text-white font-medium" : "text-white/70 hover:bg-white/5"
+          "w-full flex items-center justify-between rounded-xl px-3 py-2.5 text-sm transition-colors",
+          isActive || isExpanded ? "bg-white/10 text-white font-medium shadow-sm" : "text-white/70 hover:bg-white/5 hover:text-white"
         )}
       >
         <div className="flex items-center gap-3">
@@ -213,9 +214,9 @@ function NavItem({ module, isActive, isExpanded, toggleExpand, location }) {
                 key={sub.name}
                 to={sub.href}
                 className={cn(
-                  "block px-3 py-1.5 rounded-md text-xs transition-colors my-0.5",
+                  "block rounded-lg px-3 py-1.5 text-xs transition-colors my-0.5",
                   isSubActive 
-                    ? "bg-white/20 text-white font-bold border-l-2 border-white pl-2.5" 
+                    ? "bg-gold/20 text-gold font-bold border-l-2 border-gold pl-2.5" 
                     : "text-white/50 hover:bg-white/5 hover:text-white/90"
                 )}
               >
@@ -238,19 +239,14 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="fixed left-0 top-0 z-40 h-screen w-[280px] bg-primary text-white flex flex-col font-sans">
+    <aside className="fixed left-0 top-0 z-40 h-screen w-[280px] bg-sidebar text-white flex flex-col font-sans">
       <div className="p-5 border-b border-white/10 shrink-0 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-accent rounded flex items-center justify-center font-bold text-white shadow-inner">A</div>
-          <div>
-            <h1 className="text-sm font-bold tracking-wider uppercase text-white/90">ALIYAS GROUP</h1>
-            <p className="text-[10px] text-white/50 tracking-wider">ENTERPRISE ERP</p>
-          </div>
-        </div>
+        <BrandLogo />
+        <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.28em] text-white/40">Enterprise HRMS ERP</p>
       </div>
       
       <nav className="flex-1 py-4 overflow-y-auto custom-scrollbar">
-        <div className="px-5 space-y-1.5">
+        <div className="px-4 space-y-1.5">
           {NAV_MODULES.map((module) => {
             const isActive = location.pathname.startsWith(module.href) && module.href !== "/";
             const isHomeActive = module.href === "/" && location.pathname === "/";
@@ -271,8 +267,8 @@ export function Sidebar() {
       </nav>
 
       <div className="p-4 bg-black/30 shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white ring-1 ring-white/20">
+        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3">
+          <div className="w-9 h-9 rounded-full bg-gold/20 flex items-center justify-center text-gold ring-1 ring-gold/20">
             <Users className="w-4 h-4" />
           </div>
           <div>
