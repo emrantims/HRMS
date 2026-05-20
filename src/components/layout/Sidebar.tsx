@@ -5,8 +5,9 @@ import { BrandLogo } from "../BrandLogo";
 import { 
   BarChart3, Users, CalendarCheck, Banknote, Landmark, FileCheck, 
   Laptop, DoorOpen, PieChart, Bot, Building2, ShieldCheck, 
-  Settings, ChevronDown, ChevronRight
+  Settings, ChevronDown, ChevronRight, PanelLeftClose, PanelLeftOpen
 } from "lucide-react";
+import { Button } from "../ui/Button";
 
 const NAV_MODULES = [
   {
@@ -188,7 +189,24 @@ const NAV_MODULES = [
   }
 ];
 
-function NavItem({ module, isActive, isExpanded, toggleExpand, location }) {
+function NavItem({ module, isActive, isExpanded, toggleExpand, location, collapsed }) {
+  const Icon = module.icon;
+
+  if (collapsed) {
+    return (
+      <Link
+        to={module.href}
+        title={module.name}
+        className={cn(
+          "mx-auto flex h-11 w-11 items-center justify-center rounded-2xl transition-colors",
+          isActive ? "bg-gold text-primary shadow-sm" : "text-white/65 hover:bg-white/10 hover:text-white"
+        )}
+      >
+        <Icon className="h-5 w-5" />
+      </Link>
+    );
+  }
+
   return (
     <div className="space-y-1">
       <button
@@ -199,7 +217,7 @@ function NavItem({ module, isActive, isExpanded, toggleExpand, location }) {
         )}
       >
         <div className="flex items-center gap-3">
-          <module.icon className="w-4 h-4" />
+          <Icon className="w-4 h-4" />
           {module.name}
         </div>
         {isExpanded ? <ChevronDown className="w-4 h-4 opacity-50" /> : <ChevronRight className="w-4 h-4 opacity-50" />}
@@ -230,7 +248,12 @@ function NavItem({ module, isActive, isExpanded, toggleExpand, location }) {
   );
 }
 
-export function Sidebar() {
+type SidebarProps = {
+  collapsed?: boolean;
+  onToggle?: () => void;
+};
+
+export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
   const location = useLocation();
   const [expanded, setExpanded] = useState<string | null>(null);
 
@@ -239,18 +262,36 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="fixed left-0 top-0 z-40 h-screen w-[280px] bg-sidebar text-white flex flex-col font-sans">
-      <div className="p-5 border-b border-white/10 shrink-0 shadow-sm">
-        <BrandLogo />
-        <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.28em] text-white/40">Enterprise HRMS ERP</p>
+    <aside className={cn(
+      "fixed left-0 top-0 z-40 hidden h-screen flex-col bg-sidebar text-white font-sans shadow-xl transition-[width] duration-300 ease-in-out lg:flex",
+      collapsed ? "w-[88px]" : "w-[280px]"
+    )}>
+      <div className={cn("shrink-0 border-b border-white/10 p-4 shadow-sm", collapsed ? "px-3" : "p-5")}>
+        <div className="flex items-center justify-between gap-2">
+          <div className={collapsed ? "mx-auto scale-90" : "min-w-0"}>
+            <BrandLogo compact={collapsed} />
+          </div>
+          {!collapsed && (
+            <Button variant="ghost" size="icon" onClick={onToggle} className="h-8 w-8 text-white/70 hover:bg-white/10 hover:text-white" aria-label="Collapse sidebar">
+              <PanelLeftClose className="h-4 w-4" />
+            </Button>
+          )}
+        </div>
+        {collapsed ? (
+          <Button variant="ghost" size="icon" onClick={onToggle} className="mx-auto mt-3 h-8 w-8 text-white/70 hover:bg-white/10 hover:text-white" aria-label="Expand sidebar">
+            <PanelLeftOpen className="h-4 w-4" />
+          </Button>
+        ) : (
+          <p className="mt-3 text-[10px] font-medium uppercase tracking-[0.28em] text-white/40">Enterprise HRMS ERP</p>
+        )}
       </div>
       
-      <nav className="flex-1 py-4 overflow-y-auto custom-scrollbar">
-        <div className="px-4 space-y-1.5">
+      <nav className="custom-scrollbar flex-1 overflow-y-auto py-4">
+        <div className={cn("space-y-1.5", collapsed ? "px-2" : "px-4")}>
           {NAV_MODULES.map((module) => {
             const isActive = location.pathname.startsWith(module.href) && module.href !== "/";
             const isHomeActive = module.href === "/" && location.pathname === "/";
-            const isExpanded = expanded === module.name || (expanded === null && (isActive || isHomeActive));
+            const isExpanded = !collapsed && (expanded === module.name || (expanded === null && (isActive || isHomeActive)));
 
             return (
               <NavItem 
@@ -260,22 +301,29 @@ export function Sidebar() {
                 isExpanded={isExpanded} 
                 toggleExpand={toggleExpand}
                 location={location}
+                collapsed={collapsed}
               />
             );
           })}
         </div>
       </nav>
 
-      <div className="p-4 bg-black/30 shrink-0">
-        <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3">
-          <div className="w-9 h-9 rounded-full bg-gold/20 flex items-center justify-center text-gold ring-1 ring-gold/20">
+      <div className={cn("shrink-0 bg-black/30", collapsed ? "p-3" : "p-4")}>
+        {collapsed ? (
+          <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-gold">
             <Users className="w-4 h-4" />
           </div>
-          <div>
-            <div className="text-xs font-bold text-white">HR Admin</div>
-            <div className="text-[10px] text-white/40">admin@aliyasgroup.ae</div>
+        ) : (
+          <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-3">
+            <div className="w-9 h-9 rounded-full bg-gold/20 flex items-center justify-center text-gold ring-1 ring-gold/20">
+              <Users className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="text-xs font-bold text-white">HR Admin</div>
+              <div className="text-[10px] text-white/40">admin@aliyasgroup.ae</div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </aside>
   );
