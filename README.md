@@ -7,30 +7,40 @@
 
 ## 📋 تعارف
 
-یہ ایک جدید **Human Resource Management System (HRMS)** ہے جو **Aliyas Group** کے لیے بنایا گیا ہے۔ یہ نظام کمپنی کے تمام HR کی سرگرمیوں کو آسانی سے منظم کرنے میں مدد دیتا ہے۔
+یہ ایک جدید **Human Resource Management System (HRMS)** ہے جو **Aliyas Group** کے لیے بنایا گیا ہے۔ یہ نظام کمپنی کے HR dashboard، employees، attendance، payroll اور reports کو ایک جگہ manage کرنے میں مدد دیتا ہے۔
 
 ## ✨ خصوصیات
 
 ### 📊 Dashboard
-- **Employee Statistics**: کل ملازمین، موجود، چھٹی پر، غیر حاضر
-- **Monthly Attendance Chart**: ماہانہ حاضری کے رجحانات
-- **Department Distribution**: ڈیپارٹمنٹ کی تقسیم
-- **Quick Actions**: تیز رفتار کارکردگی
+- Employee statistics: total employees, present today, on leave, absent
+- Monthly attendance chart
+- Department distribution chart
+- Weekly performance trend
+- Quick action cards linked to HR modules
 
 ### 👥 Employee Management
-- ملازم کی معلومات کا ریکارڈ
-- تربیت اور ترقی کی تفصیلات
-- تنخواہ کا نظام
+- Employee profile cards
+- Department and status indicators
+- Contact details: email, phone, location
+- Search/filter-ready layout
 
 ### 📅 Attendance Tracking
-- روزانہ حاضری کا ریکارڈ
-- چھٹیوں کا نظام
-- ماہانہ رپورٹس
+- Daily attendance summary
+- Present, late, leave, absent counters
+- Attendance log table
+- CSV export-ready action
 
 ### 💰 Payroll Management
-- تنخواہ کا حساب کتاب
-- Deductions اور Allowances
-- رپورٹ جنریشن
+- Payroll KPI cards
+- Salary run history
+- Gross pay, deductions, and net pay table
+- Payslip/download-ready layout
+
+### 📄 Reports & Analytics
+- Attendance report card
+- Payroll summary card
+- Department headcount report
+- Performance overview report
 
 ## 🛠️ فنی اسٹیک
 
@@ -39,28 +49,23 @@
 - **Styling**: Tailwind CSS
 - **Charts**: Recharts
 - **Icons**: Lucide React
+- **Routing**: React Router
 - **Build Tool**: Vite
-- **Backend**: Express.js
+
+> Note: Express dependency is currently available in `package.json`, but the current implemented app is a frontend HRMS dashboard. Backend/API integration can be added in the next phase.
 
 ## 📦 Installation
 
 ### ضروری چیزیں
-- Node.js (v18 یا اس سے بالا)
+- Node.js v18 یا اس سے اوپر
 - npm یا yarn
 
 ### Setup کریں
 
 ```bash
-# Repository کو clone کریں
 git clone https://github.com/emrantims/HRMS.git
 cd HRMS
-
-# Dependencies install کریں
 npm install
-
-# Environment variables سیٹ کریں
-cp .env.example .env.local
-# اپنی Gemini API key شامل کریں
 ```
 
 ### Development میں چلائیں
@@ -69,61 +74,41 @@ cp .env.example .env.local
 npm run dev
 ```
 
-آپ کا HRMS اب **http://localhost:3000** پر دستیاب ہے۔
+App local development میں **http://localhost:3000** پر available ہوگی۔
 
-### Production کے لیے Build کریں
+### Code check کریں
+
+```bash
+npm run lint
+```
+
+### Production build
 
 ```bash
 npm run build
-```
-
-## 📊 Dashboard Features
-
-### Statistics Cards
-- **Total Employees**: تمام ملازمین کی تعداد
-- **Present Today**: آج موجود ملازمین
-- **On Leave**: چھٹی پر ملازمین
-- **Absent**: غیر حاضر ملازمین
-
-### Charts & Analytics
-- Monthly Attendance Trends
-- Department-wise Distribution
-- Performance Metrics
-
-### Quick Actions
-- ➕ Add Employee
-- 📋 Check Attendance
-- 💰 Manage Payroll
-- 📊 View Reports
-- ⚙️ Settings
-- 🚪 Logout
-
-## 🔧 API Integration
-
-یہ نظام Google Gemini AI API کو استعمال کرتا ہے خودکار رپورٹس اور تجزیات کے لیے:
-
-```bash
-GEMINI_API_KEY=your_api_key_here
-APP_URL=http://localhost:3000
+npm run preview
 ```
 
 ## 📝 Project Structure
 
-```
+```text
 HRMS/
 ├── src/
-│   ├── main.tsx           # React entry point
-│   ├── App.tsx            # Main app component
-│   ├── App.css            # App styles
-│   ├── index.css          # Global styles
+│   ├── main.tsx
+│   ├── App.tsx
+│   ├── App.css
+│   ├── index.css
 │   └── pages/
-│       └── Dashboard.tsx   # Main dashboard
-├── index.html             # HTML template
-├── package.json           # Dependencies
-├── tsconfig.json          # TypeScript config
-├── vite.config.ts         # Vite config
-├── tailwind.config.js     # Tailwind config
-└── README.md              # یہ فائل
+│       ├── Dashboard.tsx
+│       ├── Employees.tsx
+│       ├── Attendance.tsx
+│       ├── Payroll.tsx
+│       └── Reports.tsx
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
 ```
 
 ## 🚀 Deployment
@@ -142,15 +127,14 @@ docker build -t hrms .
 docker run -p 3000:3000 hrms
 ```
 
-## 🤝 Contributing
+## 🔮 Next Phase Ideas
 
-اگر آپ اس پروجیکٹ میں حصہ دینا چاہتے ہیں:
-
-1. Fork کریں
-2. اپنی branch بنائیں (`git checkout -b feature/amazing-feature`)
-3. اپنی changes کو commit کریں (`git commit -m 'Add amazing feature'`)
-4. اپنی branch کو push کریں (`git push origin feature/amazing-feature`)
-5. Pull Request بھیجیں
+- Express/API backend endpoints
+- Database integration for live employee records
+- Add/edit employee forms
+- Attendance import/export
+- Payroll calculation engine
+- Authentication and role-based access control
 
 ## 📄 License
 
@@ -161,10 +145,6 @@ docker run -p 3000:3000 hrms
 **Aliyas Group**
 - Email: info@aliasgroup.com
 - Website: www.aliasgroup.com
-
-## 🙏 شکریہ
-
-اس HRMS نظام کو بہتر بنانے میں تمام contributors کا شکریہ۔
 
 ---
 
