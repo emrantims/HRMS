@@ -18,7 +18,7 @@ const companies = [
   { id: "CO-012", name: "AMAFH EMPLOYMENT SERVICES L.L.C", category: "3", emirate: "Dubai", type: "Employment Services", empCount: 46 },
   { id: "CO-013", name: "AMAFH TRAVEL AND TOURISM L.L.C", category: "3", emirate: "Dubai", type: "Travel and Tourism", empCount: 24 },
   { id: "CO-014", name: "AROMA GENERAL TRADING L.L.C", category: "2", emirate: "Ajman", type: "General Trading", empCount: 32 },
-  { id: "CO-015", name: "INAYA DOMESTIC SERVICES", category: "2", emirate: "Ajman", type: "Domestic Services", empCount: 66 },
+  { id: "CO-015", name: "INAYA DOMESTIC WORKERS", category: "2", emirate: "Ajman", type: "Domestic Workers", empCount: 66 },
   { id: "CO-016", name: "TAREEQ YAS BUSES RENTAL L L C SP", category: "3", emirate: "Sharjah", type: "Bus Rental", empCount: 40 },
   { id: "CO-017", name: "U R S CAR RENTAL L.L.C", category: "3", emirate: "Dubai", type: "Car Rental", empCount: 22 },
   { id: "CO-018", name: "YALA TRAVEL AND TOURISM L.L.C", category: "3", emirate: "Dubai", type: "Travel and Tourism", empCount: 20 },
