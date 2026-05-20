@@ -12,11 +12,15 @@ const groupCompanies = [
   "AMAFH EMPLOYMENT SERVICES L.L.C",
 ];
 
-export function Header() {
+type HeaderProps = {
+  onToggleSidebar?: () => void;
+};
+
+export function Header({ onToggleSidebar }: HeaderProps) {
   return (
     <header className="sticky top-0 z-30 flex h-16 w-full shrink-0 items-center justify-between border-b border-border/80 bg-surface/80 px-5 shadow-sm backdrop-blur-xl md:px-7">
       <div className="flex min-w-0 items-center gap-3">
-        <Button variant="ghost" size="icon" className="lg:hidden">
+        <Button variant="ghost" size="icon" onClick={onToggleSidebar} aria-label="Toggle sidebar">
           <Menu className="h-5 w-5" />
         </Button>
         <div className="hidden items-center gap-2 rounded-xl border border-border bg-muted/70 px-3 py-2 md:flex">
