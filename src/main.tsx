@@ -89,6 +89,10 @@ import RiskMonitoring from './pages/analytics/RiskMonitoring';
 import DashboardBuilder from './pages/analytics/DashboardBuilder';
 
 import CompanyList from './pages/company/CompanyList';
+import BranchLocations from './pages/company/BranchLocations';
+import DepartmentStructure from './pages/company/DepartmentStructure';
+import OrganizationChart from './pages/company/OrganizationChart';
+import EntityDocuments from './pages/company/EntityDocuments';
 import UserList from './pages/users/UserList';
 import AuditLogs from './pages/audit/AuditLogs';
 import GeneralSettings from './pages/settings/GeneralSettings';
@@ -106,14 +110,12 @@ createRoot(document.getElementById('root')!).render(
           <Route path="employees/import" element={<EmployeeImport />} />
           <Route path="employees/:id" element={<EmployeeProfile />} />
           <Route path="employees/:id/edit" element={<EmployeeCreate />} />
-          
           <Route path="attendance" element={<AttendanceDashboard />} />
           <Route path="attendance/upload" element={<AttendanceUpload />} />
           <Route path="attendance/report" element={<AttendanceReport />} />
           <Route path="attendance/corrections" element={<AttendanceCorrection />} />
           <Route path="attendance/settings" element={<AttendanceSettings />} />
           <Route path="attendance/employee/:id" element={<EmployeeAttendance />} />
-          
           <Route path="payroll" element={<PayrollDashboard />} />
           <Route path="payroll/run" element={<PayrollRun />} />
           <Route path="payroll/details/:id" element={<PayrollCalculationDetail />} />
@@ -123,7 +125,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="payroll/approvals" element={<PayrollApprovals />} />
           <Route path="payroll/history" element={<PayrollHistory />} />
           <Route path="payroll/deductions" element={<DeductionManagement />} />
-
           <Route path="loans" element={<LoanDashboard />} />
           <Route path="loans/request" element={<LoanRequest />} />
           <Route path="loans/approvals" element={<LoanApprovals />} />
@@ -131,7 +132,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="loans/history" element={<LoanHistory />} />
           <Route path="loans/settlement/:id" element={<EarlySettlement />} />
           <Route path="loans/preview" element={<LoanDeductionPreview />} />
-
           <Route path="assets" element={<AssetDashboard />} />
           <Route path="assets/inventory" element={<AssetInventory />} />
           <Route path="assets/create" element={<AssetCreate />} />
@@ -141,7 +141,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="assets/damage" element={<AssetDamageLoss />} />
           <Route path="assets/maintenance" element={<AssetMaintenance />} />
           <Route path="assets/history/:id" element={<AssetHistory />} />
-
           <Route path="visa" element={<VisaDashboard />} />
           <Route path="visa/list" element={<VisaList />} />
           <Route path="visa/new" element={<VisaNewProcess />} />
@@ -152,7 +151,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="visa/alerts" element={<VisaAlerts />} />
           <Route path="visa/documents" element={<VisaDocuments />} />
           <Route path="visa/timeline/:id" element={<VisaTimeline />} />
-
           <Route path="exit" element={<ExitDashboard />} />
           <Route path="exit/new" element={<ExitInitiation />} />
           <Route path="exit/timeline/:id" element={<ExitTimeline />} />
@@ -164,7 +162,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="exit/summary/:id" element={<SettlementSummary />} />
           <Route path="exit/history" element={<ExitHistory />} />
           <Route path="exit/certificate/:id" element={<ClearanceCertificate />} />
-
           <Route path="automation" element={<AutomationDashboard />} />
           <Route path="automation/rules" element={<RulesList />} />
           <Route path="automation/rules/new" element={<CreateRule />} />
@@ -176,7 +173,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="automation/simulate" element={<RuleSimulation />} />
           <Route path="automation/settings" element={<Settings />} />
           <Route path="automation/visualization" element={<CrossModuleVisualization />} />
-
           <Route path="analytics" element={<ExecutiveOverview />} />
           <Route path="analytics/multi-company" element={<MultiCompanyAnalytics />} />
           <Route path="analytics/workforce" element={<WorkforceAnalytics />} />
@@ -190,12 +186,14 @@ createRoot(document.getElementById('root')!).render(
           <Route path="analytics/drill-down" element={<DrillDownAnalytics />} />
           <Route path="analytics/risks" element={<RiskMonitoring />} />
           <Route path="analytics/builder" element={<DashboardBuilder />} />
-
           <Route path="company/list" element={<CompanyList />} />
+          <Route path="company/branches" element={<BranchLocations />} />
+          <Route path="company/departments" element={<DepartmentStructure />} />
+          <Route path="company/org-chart" element={<OrganizationChart />} />
+          <Route path="company/documents" element={<EntityDocuments />} />
           <Route path="users/list" element={<UserList />} />
           <Route path="audit/logs" element={<AuditLogs />} />
           <Route path="settings/general" element={<GeneralSettings />} />
-
           <Route path="*" element={<div className="p-8 text-center text-primary/60 font-medium tracking-wide">Module under construction in this prototype.</div>} />
         </Route>
       </Routes>
