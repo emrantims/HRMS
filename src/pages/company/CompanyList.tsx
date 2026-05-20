@@ -61,10 +61,25 @@ export default function CompanyList() {
         <Card className="p-5 bg-surface border border-primary/10"><p className="text-[10px] uppercase font-bold text-primary/50 tracking-wider">Covered Emirates</p><h3 className="text-2xl font-bold text-primary mt-1">{totalEmirates}</h3></Card>
       </div>
 
-      <Card className="p-4 bg-surface border border-primary/10">
-        <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-          <div className="relative w-full lg:max-w-md"><Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary/40" /><Input value={query} onChange={(e) => setQuery(e.target.value)} className="pl-9" placeholder="Search company, type, or emirate..." /></div>
-          <div className="flex items-center gap-2 overflow-x-auto"><Filter className="w-4 h-4 text-primary/40 shrink-0" />{emirates.map((emirate) => <button key={emirate} onClick={() => setSelectedEmirate(emirate)} className={`rounded-full px-3 py-1.5 text-xs font-bold transition-colors ${selectedEmirate === emirate ? "bg-accent text-white" : "bg-background text-primary/60 hover:text-primary"}`}>{emirate}</button>)}</div>
+      <Card className="bg-surface border border-primary/10 overflow-visible">
+        <div className="flex min-h-[72px] flex-col gap-3 px-4 py-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="relative w-full lg:max-w-md shrink-0">
+            <Search className="pointer-events-none absolute left-3 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-primary/40" />
+            <Input value={query} onChange={(e) => setQuery(e.target.value)} className="h-10 pl-9" placeholder="Search company, type, or emirate..." />
+          </div>
+          <div className="flex min-h-10 flex-wrap items-center justify-start gap-2 overflow-visible lg:justify-end">
+            <Filter className="h-4 w-4 shrink-0 text-primary/40" />
+            {emirates.map((emirate) => (
+              <button
+                key={emirate}
+                type="button"
+                onClick={() => setSelectedEmirate(emirate)}
+                className={`inline-flex h-9 shrink-0 items-center rounded-full px-4 text-xs font-bold leading-none transition-colors ${selectedEmirate === emirate ? "bg-accent text-white shadow-sm" : "bg-background text-primary/60 hover:text-primary"}`}
+              >
+                {emirate}
+              </button>
+            ))}
+          </div>
         </div>
       </Card>
 
