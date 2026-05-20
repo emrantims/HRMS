@@ -91,8 +91,32 @@
   main .text-primary\/40, main .text-primary\/50, main .text-primary\/60 {
     color: var(--color-muted-foreground) !important;
   }
-  main .bg-primary, main .bg-accent, main .bg-success, main .bg-warning, main .bg-destructive, main .bg-info {
-    color: #ffffff;
+
+  /* Dark/colored surface contrast guard: purple/accent cards and buttons must keep readable light text. */
+  main .bg-primary, main .bg-accent, main .bg-success, main .bg-warning, main .bg-destructive, main .bg-info,
+  main [class*="from-accent"], main [class*="to-accent"], main [class*="via-accent"],
+  main [class*="from-purple"], main [class*="to-purple"], main [class*="via-purple"],
+  main [class*="bg-purple"], main [class*="bg-violet"] {
+    color: #ffffff !important;
+  }
+  main .bg-primary *, main .bg-accent *, main .bg-success *, main .bg-warning *, main .bg-destructive *, main .bg-info *,
+  main [class*="from-accent"] *, main [class*="to-accent"] *, main [class*="via-accent"] *,
+  main [class*="from-purple"] *, main [class*="to-purple"] *, main [class*="via-purple"] *,
+  main [class*="bg-purple"] *, main [class*="bg-violet"] * {
+    color: inherit;
+  }
+  main .bg-primary .text-white, main .bg-accent .text-white, main .bg-success .text-white, main .bg-warning .text-white, main .bg-destructive .text-white, main .bg-info .text-white,
+  main [class*="from-accent"] .text-white, main [class*="to-accent"] .text-white, main [class*="via-accent"] .text-white,
+  main [class*="from-purple"] .text-white, main [class*="to-purple"] .text-white, main [class*="via-purple"] .text-white,
+  main [class*="bg-purple"] .text-white, main [class*="bg-violet"] .text-white {
+    color: #ffffff !important;
+  }
+  main .bg-primary .text-white\/40, main .bg-primary .text-white\/50, main .bg-primary .text-white\/60, main .bg-primary .text-white\/70, main .bg-primary .text-white\/80, main .bg-primary .text-white\/90,
+  main .bg-accent .text-white\/40, main .bg-accent .text-white\/50, main .bg-accent .text-white\/60, main .bg-accent .text-white\/70, main .bg-accent .text-white\/80, main .bg-accent .text-white\/90,
+  main [class*="from-accent"] .text-white\/40, main [class*="from-accent"] .text-white\/50, main [class*="from-accent"] .text-white\/60, main [class*="from-accent"] .text-white\/70, main [class*="from-accent"] .text-white\/80, main [class*="from-accent"] .text-white\/90,
+  main [class*="bg-purple"] .text-white\/40, main [class*="bg-purple"] .text-white\/50, main [class*="bg-purple"] .text-white\/60, main [class*="bg-purple"] .text-white\/70, main [class*="bg-purple"] .text-white\/80, main [class*="bg-purple"] .text-white\/90,
+  main [class*="bg-violet"] .text-white\/40, main [class*="bg-violet"] .text-white\/50, main [class*="bg-violet"] .text-white\/60, main [class*="bg-violet"] .text-white\/70, main [class*="bg-violet"] .text-white\/80, main [class*="bg-violet"] .text-white\/90 {
+    color: rgba(255, 255, 255, 0.86) !important;
   }
   main .bg-primary .text-primary, main .bg-primary .text-muted-foreground, main .bg-accent .text-primary, main .bg-accent .text-muted-foreground, main .bg-success .text-primary, main .bg-success .text-muted-foreground, main .bg-warning .text-primary, main .bg-warning .text-muted-foreground, main .bg-destructive .text-primary, main .bg-destructive .text-muted-foreground, main .bg-info .text-primary, main .bg-info .text-muted-foreground {
     color: rgba(255, 255, 255, 0.92) !important;
