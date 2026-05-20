@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Sidebar } from "./Sidebar";
 import { Header } from "./Header";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -45,13 +45,14 @@ function routeLabel(pathname: string) {
 export function DashboardLayout() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const showBack = shouldShowBack(location.pathname);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background font-sans text-primary">
-      <Sidebar />
-      <div className="flex flex-1 flex-col overflow-hidden lg:ml-[248px]">
-        <Header />
+    <div className="h-screen overflow-hidden bg-background font-sans text-primary">
+      <Sidebar collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed((value) => !value)} />
+      <div className={`flex h-screen min-w-0 flex-col overflow-hidden transition-[margin] duration-300 ease-in-out ${sidebarCollapsed ? "lg:ml-[88px]" : "lg:ml-[280px]"}`}>
+        <Header onToggleSidebar={() => setSidebarCollapsed((value) => !value)} />
         <main className="custom-scrollbar flex-1 overflow-y-auto p-5 md:p-7">
           <div className="app-content flex w-full min-w-0 flex-col gap-5">
             {showBack && (
