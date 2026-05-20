@@ -1,134 +1,152 @@
-import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
-import { Users, CheckCircle, AlertCircle, UserX } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts'
+import { AlertCircle, CalendarCheck, CheckCircle, FileText, UserPlus, Users, UserX, WalletCards } from 'lucide-react'
+
+const stats = [
+  { label: 'Total Employees', value: '450', change: '+12 this month', icon: Users, iconClass: 'text-blue-600', bgLight: 'bg-blue-50' },
+  { label: 'Present Today', value: '420', change: '93.3% attendance', icon: CheckCircle, iconClass: 'text-emerald-600', bgLight: 'bg-emerald-50' },
+  { label: 'On Leave', value: '15', change: '5 approved today', icon: AlertCircle, iconClass: 'text-amber-600', bgLight: 'bg-amber-50' },
+  { label: 'Absent', value: '15', change: 'Needs follow-up', icon: UserX, iconClass: 'text-rose-600', bgLight: 'bg-rose-50' },
+]
+
+const attendanceData = [
+  { month: 'Jan', present: 420, absences: 30 },
+  { month: 'Feb', present: 430, absences: 20 },
+  { month: 'Mar', present: 440, absences: 10 },
+  { month: 'Apr', present: 435, absences: 15 },
+  { month: 'May', present: 445, absences: 5 },
+  { month: 'Jun', present: 450, absences: 0 },
+]
+
+const departmentData = [
+  { name: 'HR', value: 45 },
+  { name: 'IT', value: 120 },
+  { name: 'Sales', value: 95 },
+  { name: 'Marketing', value: 65 },
+  { name: 'Finance', value: 55 },
+  { name: 'Operations', value: 70 },
+]
+
+const performanceData = [
+  { week: 'W1', score: 78 },
+  { week: 'W2', score: 82 },
+  { week: 'W3', score: 86 },
+  { week: 'W4', score: 91 },
+]
+
+const colors = ['#4f46e5', '#7c3aed', '#db2777', '#0891b2', '#059669', '#f59e0b']
+
+const quickActions = [
+  { title: 'Add Employee', description: 'Create a new profile', icon: UserPlus, path: '/employees' },
+  { title: 'Attendance', description: 'Review daily status', icon: CalendarCheck, path: '/attendance' },
+  { title: 'Payroll', description: 'Manage salary runs', icon: WalletCards, path: '/payroll' },
+  { title: 'Reports', description: 'Export HR insights', icon: FileText, path: '/reports' },
+]
 
 const Dashboard = () => {
-  const stats = [
-    { label: 'Total Employees', value: '450', icon: Users, color: 'bg-blue-500', bgLight: 'bg-blue-50' },
-    { label: 'Present Today', value: '420', icon: CheckCircle, color: 'bg-green-500', bgLight: 'bg-green-50' },
-    { label: 'On Leave', value: '15', icon: AlertCircle, color: 'bg-yellow-500', bgLight: 'bg-yellow-50' },
-    { label: 'Absent', value: '15', icon: UserX, color: 'bg-red-500', bgLight: 'bg-red-50' },
-  ]
-
-  const attendanceData = [
-    { month: 'Jan', attendance: 420, absences: 30 },
-    { month: 'Feb', attendance: 430, absences: 20 },
-    { month: 'Mar', attendance: 440, absences: 10 },
-    { month: 'Apr', attendance: 435, absences: 15 },
-    { month: 'May', attendance: 445, absences: 5 },
-    { month: 'Jun', attendance: 450, absences: 0 },
-  ]
-
-  const departmentData = [
-    { name: 'HR', value: 45 },
-    { name: 'IT', value: 120 },
-    { name: 'Sales', value: 95 },
-    { name: 'Marketing', value: 65 },
-    { name: 'Finance', value: 55 },
-    { name: 'Operations', value: 70 },
-  ]
-
-  const COLORS = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b']
-
-  const quickActions = [
-    { title: 'Add Employee', icon: '👤', color: 'bg-blue-500' },
-    { title: 'Attendance', icon: '📋', color: 'bg-green-500' },
-    { title: 'Payroll', icon: '💰', color: 'bg-yellow-500' },
-    { title: 'Reports', icon: '📊', color: 'bg-purple-500' },
-    { title: 'Settings', icon: '⚙️', color: 'bg-gray-500' },
-    { title: 'Logout', icon: '🚪', color: 'bg-red-500' },
-  ]
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">HRMS Dashboard</h1>
-        <p className="text-gray-600">Welcome back! Here's your workforce overview.</p>
-      </div>
+    <div className="space-y-8">
+      <section className="overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-600 via-violet-600 to-fuchsia-600 p-8 text-white shadow-xl shadow-indigo-100">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-indigo-100">HRMS Overview</p>
+          <h1 className="mt-3 text-4xl font-bold sm:text-5xl">Welcome back, HR Team</h1>
+          <p className="mt-4 text-indigo-100">Track workforce health, attendance, payroll status, and department performance from one clean dashboard.</p>
+        </div>
+      </section>
 
-      {/* Statistics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        {stats.map((stat, index) => {
+      <section className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+        {stats.map((stat) => {
           const Icon = stat.icon
           return (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-              <div className="flex items-center justify-between">
+            <article key={stat.label} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+              <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-gray-600 text-sm font-medium">{stat.label}</p>
-                  <p className="text-3xl font-bold text-gray-800 mt-2">{stat.value}</p>
+                  <p className="text-sm font-medium text-slate-500">{stat.label}</p>
+                  <p className="mt-2 text-3xl font-bold text-slate-950">{stat.value}</p>
+                  <p className="mt-2 text-sm text-slate-500">{stat.change}</p>
                 </div>
-                <div className={`${stat.bgLight} p-3 rounded-lg`}>
-                  <Icon className={`w-8 h-8 text-${stat.color.split('-')[1]}-500`} />
+                <div className={`${stat.bgLight} rounded-2xl p-3`}>
+                  <Icon className={`h-7 w-7 ${stat.iconClass}`} />
                 </div>
               </div>
-            </div>
+            </article>
           )
         })}
-      </div>
+      </section>
 
-      {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        {/* Attendance Chart */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Monthly Attendance</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={attendanceData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="attendance" fill="#667eea" name="Present" />
-              <Bar dataKey="absences" fill="#f093fb" name="Absences" />
-            </BarChart>
-          </ResponsiveContainer>
+      <section className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-xl font-bold text-slate-950">Monthly Attendance</h2>
+          <p className="mt-1 text-sm text-slate-500">Present vs absent trend for the current half-year.</p>
+          <div className="mt-6 h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={attendanceData}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="month" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="present" fill="#4f46e5" name="Present" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="absences" fill="#f43f5e" name="Absences" radius={[8, 8, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
-        {/* Department Distribution */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Department Distribution</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={departmentData}
-                cx="50%"
-                cy="50%"
-                labelLine={false}
-                label={({ name, value }) => `${name}: ${value}`}
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="value"
-              >
-                {departmentData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-xl font-bold text-slate-950">Department Distribution</h2>
+          <p className="mt-1 text-sm text-slate-500">Employee count by department.</p>
+          <div className="mt-6 h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie data={departmentData} cx="50%" cy="50%" labelLine={false} label={({ name, value }) => `${name}: ${value}`} outerRadius={100} dataKey="value">
+                  {departmentData.map((entry, index) => (
+                    <Cell key={entry.name} fill={colors[index % colors.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Quick Actions */}
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-6">Quick Actions</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {quickActions.map((action, index) => (
-            <button
-              key={index}
-              className={`${action.color} text-white rounded-lg py-4 px-3 hover:opacity-90 transition-opacity flex flex-col items-center justify-center gap-2`}
-            >
-              <span className="text-2xl">{action.icon}</span>
-              <span className="text-xs font-semibold text-center">{action.title}</span>
-            </button>
-          ))}
+      <section className="grid grid-cols-1 gap-6 xl:grid-cols-3">
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm xl:col-span-2">
+          <h2 className="text-xl font-bold text-slate-950">Weekly Performance</h2>
+          <div className="mt-6 h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={performanceData}>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                <XAxis dataKey="week" />
+                <YAxis />
+                <Tooltip />
+                <Line type="monotone" dataKey="score" stroke="#4f46e5" strokeWidth={3} name="Performance Score" />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
-      </div>
 
-      {/* Footer */}
-      <div className="mt-8 text-center text-gray-600 text-sm">
-        <p>© 2026 Aliyas Group HRMS. All rights reserved.</p>
-      </div>
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 className="text-xl font-bold text-slate-950">Quick Actions</h2>
+          <div className="mt-5 space-y-3">
+            {quickActions.map((action) => {
+              const Icon = action.icon
+              return (
+                <Link key={action.title} to={action.path} className="flex items-center gap-4 rounded-2xl border border-slate-200 p-4 transition hover:border-indigo-200 hover:bg-indigo-50">
+                  <div className="rounded-xl bg-indigo-600 p-3 text-white">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-slate-950">{action.title}</p>
+                    <p className="text-sm text-slate-500">{action.description}</p>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
