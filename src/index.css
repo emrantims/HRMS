@@ -60,7 +60,10 @@
   main .bg-surface .text-white, main .bg-white .text-white, main .bg-background .text-white, main .bg-muted .text-white, main .glass-panel .text-white {
     color: var(--color-primary) !important;
   }
-  main .text-white\/60, main .text-white\/70, main .text-white\/80, main .text-white\/90 {
+  main .text-white\/40, main .text-white\/50, main .text-white\/60, main .text-white\/70, main .text-white\/80, main .text-white\/90 {
+    color: var(--color-muted-foreground) !important;
+  }
+  main .text-primary\/40, main .text-primary\/50, main .text-primary\/60 {
     color: var(--color-muted-foreground) !important;
   }
   main .bg-primary, main .bg-accent, main .bg-success, main .bg-warning, main .bg-destructive, main .bg-info {
@@ -75,7 +78,13 @@
   }
   main input::placeholder, main textarea::placeholder { color: #8b95a1; }
   main table, main th, main td { color: var(--color-primary); }
-  main .text-primary\/40, main .text-primary\/50, main .text-primary\/60 {
-    color: var(--color-muted-foreground) !important;
+
+  /* Emergency guard for legacy prototype screens that still used hard-coded dark Tailwind colors. */
+  main [class*="bg-[#0"], main [class*="bg-[#1"], main [class*="bg-black"], main [class*="bg-neutral"], main [class*="bg-zinc"], main [class*="bg-slate"] {
+    background-color: #ffffff !important;
+    color: var(--color-primary) !important;
+  }
+  main [class*="bg-[#0"] *, main [class*="bg-[#1"] *, main [class*="bg-black"] *, main [class*="bg-neutral"] *, main [class*="bg-zinc"] *, main [class*="bg-slate"] * {
+    color: inherit;
   }
 }
