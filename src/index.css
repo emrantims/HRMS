@@ -1,36 +1,84 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  
-  /* Requested Color Palette */
-  --color-base: #FFF3E6;
-  --color-primary: #381932;
-  --color-accent: #004643;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* Semantic Mappings */
-  --color-background: var(--color-base);
-  --color-foreground: var(--color-primary);
-  
-  /* Surface colors (Cards, Modals) */
-  --color-surface: #FFFFFF;
-  --color-surface-foreground: var(--color-primary);
-
-  /* Borders & Dividers */
-  --color-border: color-mix(in srgb, var(--color-primary) 15%, transparent);
-
-  /* Status Colors (Derived to fit enterprise theme) */
-  --color-success: #059669; /* Emerald 600 */
-  --color-warning: #D97706; /* Amber 600 */
-  --color-destructive: #DC2626; /* Red 600 */
-  --color-info: #0284C7; /* Sky 600 */
+  /* ALIYAS Group premium light theme inspired by shadcn/ui */
+  --color-background: #f4f5f8;
+  --color-foreground: #111827;
+  --color-base: #f4f5f8;
+  --color-primary: #111827;
+  --color-primary-foreground: #ffffff;
+  --color-accent: #7c3aed;
+  --color-accent-foreground: #ffffff;
+  --color-gold: #f5bd19;
+  --color-gold-foreground: #17120a;
+  --color-sidebar: #111827;
+  --color-sidebar-foreground: #f9fafb;
+  --color-surface: #ffffff;
+  --color-surface-foreground: #111827;
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #6b7280;
+  --color-border: #e5e7eb;
+  --color-input: #e5e7eb;
+  --color-ring: #7c3aed;
+  --color-success: #0f766e;
+  --color-warning: #d97706;
+  --color-destructive: #dc2626;
+  --color-info: #2563eb;
 }
 
 @layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    background: var(--color-background);
+  }
+
   body {
-    background-color: var(--color-background);
+    margin: 0;
+    background:
+      radial-gradient(circle at top left, rgba(245, 189, 25, 0.10), transparent 28rem),
+      linear-gradient(180deg, #f7f7fa 0%, var(--color-background) 100%);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(229, 231, 235, 0.85);
+    box-shadow: 0 18px 55px rgba(17, 24, 39, 0.08);
+    backdrop-filter: blur(18px);
+  }
+
+  .aliyas-gold {
+    background: linear-gradient(135deg, #ffd95a 0%, #f5bd19 42%, #b77905 100%);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(107, 114, 128, 0.32);
+    border-radius: 999px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
   }
 }
