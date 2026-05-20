@@ -1,0 +1,43 @@
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.sidebar {
+  background: white;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+.stat-card {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.chart-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
+}
+
+.action-button {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.action-button:hover {
+  transform: scale(1.05);
+}
