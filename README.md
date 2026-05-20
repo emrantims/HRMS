@@ -2,7 +2,7 @@
 ## Aliyas Group ERP
 
 <div align="center">
-<img width="1200" height="475" alt="HRMS Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+<img width="1200" height="475" alt="Aliyas Group HRMS Banner" src="assets/hrms-banner.svg" />
 </div>
 
 ## 📋 تعارف
@@ -93,6 +93,8 @@ npm run preview
 
 ```text
 HRMS/
+├── assets/
+│   └── hrms-banner.svg
 ├── src/
 │   ├── main.tsx
 │   ├── App.tsx
