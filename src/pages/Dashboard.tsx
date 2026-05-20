@@ -145,17 +145,20 @@ export default function HRDashboard() {
       <Card className="overflow-hidden">
         <CardContent className="p-3">
           <div className="flex gap-2 overflow-x-auto custom-scrollbar">
-            {roles.map((role) => (
-              <button
-                key={role.id}
-                type="button"
-                onClick={() => setActiveRole(role.id)}
-                className={`min-w-[178px] rounded-2xl border px-4 py-3 text-left transition-all ${activeRole === role.id ? "border-accent bg-accent text-white shadow-sm" : "border-border bg-surface text-primary hover:bg-muted/60"}`}
-              >
-                <p className="text-sm font-bold">{role.label}</p>
-                <p className={`mt-1 text-[11px] ${activeRole === role.id ? "text-white/80" : "text-muted-foreground"}`}>{role.subtitle}</p>
-              </button>
-            ))}
+            {roles.map((role) => {
+              const selected = activeRole === role.id;
+              return (
+                <button
+                  key={role.id}
+                  type="button"
+                  onClick={() => setActiveRole(role.id)}
+                  className={`min-w-[178px] rounded-2xl border px-4 py-3 text-left transition-all ${selected ? "border-accent bg-accent shadow-sm ring-2 ring-accent/20" : "border-border bg-surface hover:bg-muted/60"}`}
+                >
+                  <p className={`text-sm font-bold ${selected ? "!text-white" : "text-primary"}`}>{role.label}</p>
+                  <p className={`mt-1 text-[11px] ${selected ? "!text-white/85" : "text-muted-foreground"}`}>{role.subtitle}</p>
+                </button>
+              );
+            })}
           </div>
         </CardContent>
       </Card>
